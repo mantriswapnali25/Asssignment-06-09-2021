@@ -1,0 +1,210 @@
+1.  Replace a character a with e in following string without using inbuilt method.
+
+  Halo
+
+  Replace character at 3rd index pos in upper case.
+.....................................................................................
+
+public class replaceString
+{
+    public static void main(String[] args) {
+       String str = "Halo";
+       System.out.println("String: "+str);
+       int position = 1;
+       char replacewith = 'e';
+       String result = str.substring(0, position)+ replacewith + str.substring(position + 1);
+       System.out.println("String after replacing a character: "+result);
+    }
+} 
+
+
+
+
+2. Write a code to mask a given string.
+
+  for e.g 
+
+    SABBIR POONAWALA
+    SAXXXX POXXXXXXX
+...............................................................................................................................
+
+package com;
+
+public class Masking {
+
+	public static void main(String[] args) throws Exception {
+		// TODO Auto-generated method stub
+		 String str1 = "Samiksha";
+	     String str2 ="Kamat";
+	        
+	        
+	        System.out.println( maskString(str1, 4, str1.length(), '*') );
+	        
+	        System.out.println( maskString(str2, 2, str2.length(), '*') );
+	        
+	        
+	}
+
+	private static String maskString(String strText, int start, int end, char maskChar) 
+	        throws Exception{
+	        
+	        if(strText == null || strText.equals(""))
+	            return "";
+	        
+	        if(start < 0)
+	            start = 0;
+	        
+	        if( end > strText.length() )
+	            end = strText.length();
+	            
+	        int masklen = end - start;
+	        
+	        if(masklen == 0)
+	            return strText;
+	        
+	        StringBuilder Mask = new StringBuilder(masklen);
+	        
+	        for(int i = 0; i < masklen; i++){
+	            Mask.append(maskChar);
+	        }
+	        
+	        return strText.substring(0, start) 
+	            + Mask.toString() 
+	            + strText.substring(start + masklen);
+	    }
+	 
+	}
+
+
+
+
+
+
+
+3. Check if given string starts with A and Endwith t.
+
+.................................................................................................................................
+public class uppercase
+{
+    public static void main(String[] args) {
+        String result;
+    
+       String str = "Halo";
+       System.out.println("String: "+str);
+       int position = 3;
+    if (str.charAt(3) > 97 && str.charAt(3) < 122)
+    {
+       char ch=(char)(int)(str.charAt(3) - 32); 
+       result=str.substring(0,position)+ch;
+       System.out.println("String after uppercase a character at 3rd index: "+ result);
+    }
+    }
+}
+
+
+
+4. Create a class Student with following attributes
+   
+   Student
+ =============
+   rollNo int
+   studentFirstName String
+   studentLastName  String
+   studentAge int
+ 
+ Override toString(),equals(),hashCode() without using tool.
+
+.................................................................................................................................
+
+public class Student {
+    private int rollNo;
+    private String studentFirstName;
+    private String studentLastName;
+    private int age;
+
+    public Student(int rollNo, String studentFirstName, String studentLastName, int age) {
+        this.rollNo = rollNo;
+        this.studentFirstName = studentFirstName;
+        this.studentLastName = studentLastName;
+        this.age = age;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder builder = new StringBuilder();
+        builder.append("[").append(rollNo + ",").append(studentFirstName).append(" ").append(studentLastName)
+                .append(","+age + "").append("]");
+
+        return builder.toString();
+    }
+    
+    @Override
+    public boolean equals(Object obj) 
+    {
+        if(obj != null && obj instanceof Student )
+        {
+            Student student = (Student)obj;
+            if (age != student.age)
+                return false;
+            if (rollNo != student.rollNo)
+                return false;
+            if (studentFirstName == null) {
+                if (student.studentFirstName != null)
+                    return false;
+            } else if (!studentFirstName.equals(student.studentFirstName))
+                return false;
+            if (studentLastName == null) {
+                if (student.studentLastName != null)
+                    return false;
+            } else if (!studentLastName.equals(student.studentLastName))
+                return false;
+            return true;
+        }
+        else{
+            return false;
+        }
+        
+    }
+
+    @Override
+    public int hashCode() {
+        return rollNo
+        ^studentFirstName.hashCode()
+        ^studentLastName.hashCode()
+        ^age;
+    }
+
+    public static void main(String[] args) {
+        Student s1 = new Student(1001, "Kinshuk", "Jain", 22);
+        Student s2 = new Student(1001, "Jain", "Kinshuk", 22);
+        Student s3 = new Student(1002, "Praveen", "Jain", 25);
+        Student s4 = new Student(1002, "Praveen", "Jain", 25);
+
+        System.out.println("Student 1 : "+s1);
+        System.out.println("Student 2 : "+s2);
+        System.out.println("Student 3 : "+s3);
+        System.out.println("Student 4 : "+s4);
+        
+        System.out.println("S1 equal S2 : "+s1.equals(s2));
+        System.out.println("S1 equal S3 : "+s1.equals(s3));
+        System.out.println("S3 equal S4 : "+s3.equals(s4));
+
+        System.out.println("S1 hashcode : "+s1.hashCode());
+        System.out.println("S2 hashcode : "+s2.hashCode());
+        System.out.println("S3 hashcode : "+s3.hashCode());
+        System.out.println("S4 hashcode : "+s4.hashCode());
+        
+    }
+
+   
+
+    
+}
+
+
+
+
+
+
+
+
